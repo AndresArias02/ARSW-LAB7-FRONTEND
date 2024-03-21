@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blueprints</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h2>
+        Create New Blueprint
+    </h2>
+    <form (ngSubmit)="onSubmit()">
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" [(ngModel)]="blueprint.author" required>
+        </div>
+        
+        <div>
+            <label for="blueprintName">Blueprint Name:</label>
+            <input type="text" id="blueprintName" name="blueprintName" [(ngModel)]="blueprint.name" required>
+        </div>
+        
+        <div>
+            <label for="points">Points:</label>
+            <textarea id="points" name="points" [(ngModel)]="pointsInput" required placeholder="Ingrese los puntos en formato (x,y),(x,y), separados por comas. Por ejemplo: (1,2),(3,4),(5,6)"></textarea>
+        </div>
+        
+        <button type="submit">Create</button>
+    
+    </form>
+</body>
+</html>

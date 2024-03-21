@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blueprints</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <form (ngSubmit)="onSubmit()">
+        <label for="author">Author:</label>
+        <input type="text" id="author" [(ngModel)]="author" name="author">
+        <input type="submit" value="Get Blueprints">
+    </form>
+
+    <div *ngIf="flagDiv">
+        <h2>{{ name }}</h2>
+    </div>
+    <div>
+        <button id="newBluePrint" (click)="createNewBlueprint()">Create new blueprint</button>
+    </div>
+    
+    <div style="margin-top: 25px" *ngIf="flagDiv">
+        <table class="container" *ngIf="blueprints && blueprints.length > 0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount of Points</th>
+                    <th>Open</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let blueprint of blueprints">
+                    <td>{{blueprint.name}}</td>
+                    <td>{{blueprint.amountOfPoints}}</td>
+                    <td>
+                        <button id="Open" (click)="openBlueprint(blueprint.name)">Open</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <h2>Total user points : {{amountOfPoints}}</h2>
+        </div>
+        <div class="nameBlueprint">
+            <h2>Current blueprint: {{ blueprintName }}</h2>
+        </div>
+    </div>
+    <div class="grafica" *ngIf="flagDiv">
+        <canvas id="Canvas" width="400" height="400" style="border: 1px solid black"></canvas>
+    </div>
+    <div *ngIf="flagDiv">
+        <button id="save-update" (click)="askForPoints()">Save/Update</button>
+        <button id="delete" (click)="deleteBlueprint()">Delete</button>
+    </div>
+</body>
+</html>
